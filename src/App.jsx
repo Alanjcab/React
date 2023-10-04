@@ -4,8 +4,8 @@ import NavBar from "./components/Navbar"
 export const App = () => {
   return (
     <div>
-    <NavBar/>
-    <ItemsListContainer/>
+      <NavBar/>
+      <ItemsListContainer greeting={"Bienvenido a mi tienda"}/>
     </div>
   )
 }
