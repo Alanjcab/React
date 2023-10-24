@@ -1,9 +1,11 @@
 import Itemlist from "./Itemlist"
 import { useParams } from "react-router-dom"
-
+import {Center,Flex} from "@chakra-ui/react"
 const ItemsListContainer = () => {
 
   const {categoria} = useParams()
+
+  console.log(categoria)
 
   const productos = [
     {id: "1", name: "producto 1", description: "descripcion del producto", price: 100, categoria:"a"},
@@ -34,12 +36,14 @@ mostrarProductos
   console.log(error)
 })
 
-const filterCategoria = productos.filter((productos)=> productos.cateria == categoria)
+const filterCategoria = productos.filter((productos)=> productos.categoria === categoria)
 
   return (
+    <Center p ="1 rem">
     <>
-    <Itemlist productos={filterCategoria} />
+    {categoria ? <Itemlist productos={filterCategoria}/> : <Itemlist productos ={productos}/>}
     </>
+    </Center>
 
   )
 }
