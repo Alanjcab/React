@@ -1,6 +1,7 @@
 
-import {Card,Stack,CardBody,Heading,CardFooter,Button,Text,Center} from "@chakra-ui/react"
+import {Card,Stack,CardBody,Heading,CardFooter,Text,Center, ButtonGroup} from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
+import ItemCount from "./ItemCount"
 
 const ItemDetails = ({ productos }) => {
 
@@ -30,9 +31,9 @@ const ItemDetails = ({ productos }) => {
                     <Text>{p.description}</Text>
                     <Text>$ {p.price}</Text>
                     <CardFooter>
-                      <Button variant='solid' colorScheme='blue'>
-                        Contador
-                      </Button>
+                      <ButtonGroup spacing='2'>
+                          <ItemCount/>
+                      </ButtonGroup>
                     </CardFooter>
                   </Stack>
                 </Card>

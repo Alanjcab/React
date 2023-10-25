@@ -1,6 +1,6 @@
 import Itemlist from "./Itemlist"
 import { useParams } from "react-router-dom"
-import {Center,Flex} from "@chakra-ui/react"
+import {Center} from "@chakra-ui/react"
 const ItemsListContainer = () => {
 
   const {categoria} = useParams()
