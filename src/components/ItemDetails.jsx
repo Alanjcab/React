@@ -1,5 +1,5 @@
 
-import {Card,Stack,CardBody,Heading,CardFooter,Text,Center, ButtonGroup} from "@chakra-ui/react"
+import {Card,Stack,CardBody,Heading,CardFooter,Text,Center, ButtonGroup, Flex} from "@chakra-ui/react"
 import { useParams } from "react-router-dom"
 import ItemCount from "./ItemCount"
 
@@ -15,6 +15,7 @@ const ItemDetails = ({ productos }) => {
             filterProduct.map((p)=>{
                 return (
                     <>
+                    
                     <Center p ="1 rem">
                     <Card 
                   direction={{ base: 'column', sm: 'row' }}
@@ -38,6 +39,7 @@ const ItemDetails = ({ productos }) => {
                   </Stack>
                 </Card>
                 </Center>
+               
                     </>
                   )
             })
