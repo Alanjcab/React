@@ -1,51 +1,142 @@
+import { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
+import {Card,CardBody,Stack,CardFooter,Button,Heading,Text,Divider} from "@chakra-ui/react";
+import { CartContext } from "../Contex/ShoppingCartContex";
+import ItemCount from "./ItemCount";
 
-import {Card,Stack,CardBody,Heading,CardFooter,Text,Center, ButtonGroup, Flex} from "@chakra-ui/react"
-import { useParams } from "react-router-dom"
-import ItemCount from "./ItemCount"
+const ItemDetails = ({ producto }) => {
+  
+  const { id } = useParams();
+  
+  const { addItem } = useContext(CartContext);
+  
+  const [quantityAdded, setQuantityAdded] = useState(1)
+  /*
+  const filteredProduct = Array.isArray(producto)
+  ? producto.filter((p) => p.id === id)
+  : [];
 
-const ItemDetails = ({ productos }) => {
+  const selectedProduct = filteredProduct[0];
+  
+  const handleOnAdd = () => {
+    if (!isNaN(quantityAdded) && quantityAdded > 0) {
+      const item = {
+        id, name: selectedProduct.name, price: selectedProduct.price}
+      addItem(item, quantityAdded)
+    } else {
+      console.log("Cantidad inválida")
+    }
+  };*/
 
-    const {id} = useParams()
-
-    const filterProduct = productos.filter((productos)=> productos.id == id)
-    console.log(filterProduct)
-    return(
-        <>
-        {
-            filterProduct.map((p)=>{
-                return (
-                    <>
-                    
-                    <Center p ="1 rem">
-                    <Card 
-                  direction={{ base: 'column', sm: 'row' }}
-                  overflow='hidden'
-                  variant='outline'
-                  bg='grey'
-                  color='white'
-                  p='4'
-                >
-                  <Stack>
-                    <CardBody>
-                      <Heading size='md'>{p.name}</Heading>
-                    </CardBody>
-                    <Text>{p.description}</Text>
-                    <Text>$ {p.price}</Text>
-                    <CardFooter>
-                      <ButtonGroup spacing='2'>
-                          <ItemCount/>
-                      </ButtonGroup>
-                    </CardFooter>
-                  </Stack>
-                </Card>
-                </Center>
-               
-                    </>
-                  )
-            })
-        }
-        </>
-    )
-}
+  return (
+    <>
+          <Card key={producto.id} direction={{ base: "column", sm: "row" }} overflow="hidden" variant="outline">
+            <Stack>
+              <CardBody>
+                <Heading size="md">{producto.name}</Heading>
+                <Divider />
+                <Text py="2">{producto.description}</Text>
+                <Divider />
+                <Text color="blue.600" fontSize="2xl">
+                  $ {producto.price}
+                </Text>
+              </CardBody>
+              <ItemCount quantity={quantityAdded} setQuantity={setQuantityAdded}/>
+              <CardFooter>
+                <Button variant="solid" colorScheme="blue" onClick={handleOnAdd}>
+                  Agregar al Carrito
+                </Button>
+              </CardFooter>
+            </Stack>
+          </Card>
+    </>
+  );
+};
 
 export default ItemDetails
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import { useContext, useState } from "react";
+import { useParams } from "react-router-dom";
+import {Card,CardBody,Stack,CardFooter,Button,Heading,Text,Divider} from "@chakra-ui/react";
+import { CartContext } from "../Contex/ShoppingCartContex";
+import ItemCount from "./ItemCount";
+
+const ItemDetails = ({ producto }) => {
+  
+  const { id } = useParams();
+  
+  const { addItem } = useContext(CartContext);
+  
+  const [quantityAdded, setQuantityAdded] = useState(1)
+  
+  const filteredProduct = Array.isArray(producto)
+  ? producto.filter((p) => p.id === id)
+  : [];
+
+  const selectedProduct = filteredProduct[0];
+  
+  const handleOnAdd = () => {
+    if (!isNaN(quantityAdded) && quantityAdded > 0) {
+      const item = {
+        id, name: selectedProduct.name, price: selectedProduct.price}
+      addItem(item, quantityAdded)
+    } else {
+      console.log("Cantidad inválida")
+    }
+  };
+
+  return (
+    <>
+      {filteredProduct.map((p) => {
+        return (
+          <Card key={p.id} direction={{ base: "column", sm: "row" }} overflow="hidden" variant="outline">
+            <Stack>
+              <CardBody>
+                <Heading size="md">{p.name}</Heading>
+                <Divider />
+                <Text py="2">{p.description}</Text>
+                <Divider />
+                <Text color="blue.600" fontSize="2xl">
+                  $ {p.price}
+                </Text>
+              </CardBody>
+              <ItemCount quantity={quantityAdded} setQuantity={setQuantityAdded}/>
+              <CardFooter>
+                <Button variant="solid" colorScheme="blue" onClick={handleOnAdd}>
+                  Agregar al Carrito
+                </Button>
+              </CardFooter>
+            </Stack>
+          </Card>
+      );
+    })}
+    </>
+  );
+};
+
+export default ItemDetails*/

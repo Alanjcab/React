@@ -1,9 +1,13 @@
 import { Badge, Box, Flex, Divider} from "@chakra-ui/react"
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { CartContext } from "../Contex/ShoppingCartContex"
 
 const CartWidget = () => {
+   
+    const { totalQuantity } = useContext(CartContext);
 
-  return (
+    return (
     
         <Flex>
             <Box>
@@ -15,7 +19,7 @@ const CartWidget = () => {
             </Box>
             <Divider/>
             <Box>
-                <Badge colorScheme='green'>0</Badge>
+                <Badge colorScheme='green'>{totalQuantity}</Badge>
             </Box>
         </Flex>
   )
