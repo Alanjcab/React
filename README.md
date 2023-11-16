@@ -12,4 +12,5 @@
 
 ### Y para finalizar tenemos un formulario para agregar nuestros datos y de esa manera nos genera una order de compra con un identificador unico.
 
-![video1807189235 (1)](https://github.com/Alanjcab/React/assets/96068621/516bdd24-cd8b-4750-88e9-519d0f8c7738)
+![video1807189235 (2)](https://github.com/Alanjcab/React/assets/96068621/00bb47f4-2841-417a-b866-481ffe6ec35f)
+
