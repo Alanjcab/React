@@ -9,6 +9,7 @@ const ItemsListContainer = () => {
  const {categoria} = useParams()
  
  const [productos, setProductos] = useState([])
+ 
 
  console.log(productos)
 

@@ -7,7 +7,7 @@ export const ShoppingCartProvider = ({children})=>{
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
-      console.log("Productos en el carrito:", cart);
+      console.log("Productos en carrito:", cart);
     }, [cart]);
   
   const addItem = (item, quantity) => {

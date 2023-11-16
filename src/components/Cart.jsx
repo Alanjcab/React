@@ -1,7 +1,7 @@
 import Form from "./Form"
 import { useContext } from "react";
 import { CartContext } from "../Contex/ShoppingCartContex"
-import { Flex, Center, Button,} from "@chakra-ui/react"
+import { Flex, Center, Button, Heading,ListItem, List, Box,Spacer} from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 
@@ -13,43 +13,56 @@ const Cart = () => {
   if (totalQuantity === 0) {
     return (
       <div>
-        <Flex>
           <Center>
-            <h1>No hay productos agregados</h1>
-            <Button as={Button} colorScheme="blue">
+            <Box>
+              <Flex alignItems='center' gap='3' direction="column">
+          <Heading as='h4' size='md'>¡No existen productos!</Heading>
+            <Button color="white" colorScheme="green">
               <Link to="/" className="Option">
-                Volver
+                Home
               </Link>
             </Button>
+            </Flex>
+            </Box>
           </Center>
-        </Flex>
       </div>
     );
   }
 
     return (
-        <div>
-      <h2>Contenido del carrito:</h2>
-      <ul>
+  <div>
+  <Flex alignItems='center' gap='3' direction="column">
+  <Spacer/>
+       
+    <Box border='2px' borderColor='gray' borderRadius='lg' p="10" >
+     <Flex alignItems='center' gap='3' direction="column">
+      <Heading as='h4' size='md'>Detalles de su compra:</Heading>
+
+      <List spacing={3}>
         {cart.map((item) => (
-          <li key={item.id}>
+        <ListItem key={item.id}>
             {item.name} - Cantidad: {item.quantity} - Precio por unidad: $
             {item.price}{" "}
-            <Button onClick={() => removeItem(item.id)} colorScheme="red">
-              Eliminar
-            </Button>
-          </li>
-        ))}
-        <h3>Total: ${totalPrice}</h3>
-        <Button onClick={() => clearCart()} className="Button">
-          Vaciar carrito
-        </Button>
-        <Button as={Link} to={"/Form"} variant="solid" colorScheme="blue">
-          Finalizar compra
-        </Button>
+        <Button onClick={() => removeItem(item.id)} colorScheme="red"> X </Button>
+        </ListItem>))}
+      
+      <Heading as='h5' size='sm'>Total: ${totalPrice}</Heading>
 
-      </ul>
-       <Form/>
+      </List>
+
+        <Button onClick={() => clearCart()} className="Button" colorScheme="blue">
+          Eliminar compra
+        </Button> 
+        </Flex>
+    </Box>
+   
+     <Spacer/>
+    <Box>
+      <Form/> 
+    </Box>
+    <Spacer/>
+  </Flex>
+         
     </div>
               
     

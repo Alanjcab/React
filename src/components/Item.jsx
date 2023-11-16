@@ -1,32 +1,21 @@
-import {Card,Stack,CardBody,Heading,CardFooter,Button,Text} from "@chakra-ui/react"
+import {Card,Heading,Button,Text, Flex} from "@chakra-ui/react"
 import { Link } from "react-router-dom"
 
 const Item = ({name, id, categoria}) => {
 
   return (
     <>
-    <Card 
-  direction={{ base: 'column', sm: 'row' }}
-  overflow='hidden'
-  variant='outline'
-  bg='grey'
-  color='white'
-  p='4'
->
-  <Stack>
-    <CardBody>
-      <Heading size='md'>{name}</Heading>
-    </CardBody>
-      <Text>{categoria}</Text>
-    <CardFooter>
-      <Button variant='solid' colorScheme='blue'>
+    <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline' color='black' p='4' border='1px' borderColor='gray' borderRadius='lg' m='1'>
+    <Flex alignItems='center' gap='30' direction="column" p='3'>
+    <Heading size='md'>{name}</Heading>
+    <Text>{categoria}</Text>
+    <Button colorScheme='blue'>
         <Link to={`/product/${id}`}>
            Ver detalles
         </Link>
-      </Button>
-    </CardFooter>
-  </Stack>
-</Card>
+    </Button>
+    </Flex>
+    </Card>
     </>
   )
 }
